@@ -5,7 +5,11 @@ from flask             import Flask, request, Response
 from rossmann.Rossmann import Rossmann
 
 # loading model
-model = pickle.load( open( '/Users/luisfelippe/Data_science_em_Producao/DataScience_em_producao/webapp/model/model_rossmann.pkl', 'rb') )
+#model = pickle.load( open( '/Users/luisfelippe/Data_science_em_Producao/DataScience_em_producao/webapp/model/model_rossmann.pkl', 'rb') )
+# loading model
+home_path =  os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(home_path, 'model')
+model = pickle.load(open(os.path.join(model_path, 'model_rossmann.pkl'), 'rb'))
 
 # initialize API
 app = Flask( __name__ )
